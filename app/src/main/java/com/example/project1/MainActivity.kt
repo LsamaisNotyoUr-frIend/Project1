@@ -1,6 +1,7 @@
 package com.example.project1
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -20,10 +21,15 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        val gitLink = "https://github.com/LsamaisNotyoUr-frIend/Project1"
         val button = binding.btnGithubBut
 
         button.setOnClickListener {
-//            Intent
+            val intent = Intent(Intent.ACTION_VIEW).apply {
+                data = Uri.parse(gitLink)
+                addCategory(Intent.CATEGORY_BROWSABLE)
+            }
+            startActivity(intent)
         }
     }
 }
